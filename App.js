@@ -5,7 +5,11 @@ import BottomNavBar from './BottomNavBar'
 export default function App() {
   return (
     <View style={styles.container}>
-      {/* <Text>Passport Meals</Text> */}
+      <StatusBar
+        animated={true}
+        barStyle="dark-content"
+        hidden={false}
+        />
       <BottomNavBar/>
     </View>
   );

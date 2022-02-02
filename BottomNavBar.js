@@ -2,6 +2,7 @@ import * as React from 'react'
 import { Text, View } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import CustomerProfile from './components/CustomerProfile';
 
 function HomeScreen() {
     return (
@@ -32,6 +33,7 @@ export default function App() {
         >
           <Tab.Screen name="Home" component={HomeScreen} />
           <Tab.Screen name="Login" component={Login} />
+          <Tab.Screen name="Profile" component={CustomerProfile} />
         </Tab.Navigator>
       </NavigationContainer>
     );
