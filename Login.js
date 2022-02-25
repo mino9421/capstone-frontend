@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Text, View, Button, TextInput, Alert  } from 'react-native'
 
 
-export default function Login(){
+
+export function Login({navigation}){
     const [email, onChangeEmail] = React.useState(null)
     const [password, onChangePassword] = React.useState(null)
 
@@ -12,23 +13,31 @@ export default function Login(){
         console.log(JSON.stringify(password))
     }
 
-    var myData = {
-        user : email,
-        pass : password
-    }
+   
 
-    axios.post("/Login", myData)
+   function send(){
+
+    var myData = {
+        email : email,
+        password : password
+    }
+    axios.post("http://localhost:9090/login", myData)
     .then(function (response) {
       console.log(response)
+
+      return(
+        <Profile/>
+        )
     })
     .catch(function (error) {
       console.log(error)
     })
+   }
 
     return(
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <View>
-          <Text>Emails</Text>
+          <Text>Email</Text>
           <TextInput
             placeholder='Enter email address'
             // value={guests}
@@ -43,7 +52,10 @@ export default function Login(){
          
           <Button
             title="Login"
-            onPress={submitData}
+            onPress= {()=>{
+                send()
+            }}
+            
           />
         </View>
       </View>
