@@ -4,6 +4,8 @@ import { Text, View, Button, TextInput, Alert  } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import CustomerProfile from './components/CustomerProfile';
+import CalenderPicker from './CalenderPicker'
+import Login from './Login'
 
 function HomeScreen() {
 
@@ -36,6 +38,8 @@ function HomeScreen() {
       })
 
   };
+
+  
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -71,23 +75,22 @@ function HomeScreen() {
           onPress={submitData}
         />
       </View>
-      <View>
-        <Text>hi</Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
+      
+      <View style={{}}>
+        <CalenderPicker/>
       </View>
+
     </View>
   );
 }
   
-function Login() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Login!</Text>
-      </View>
-    );
-}
+// function Login() {
+//     return (
+//       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+//         <Text>Login!</Text>
+//       </View>
+//     );
+// }
 
 const Tab = createMaterialBottomTabNavigator();
 
