@@ -51,7 +51,7 @@ export default function Login({navigation}){
             title="Login"
             onPress= {()=>{
                 send()
-                navigation.navigate('Profile')
+                navigation.navigate('HomeScreen')
             }}
             
           />
