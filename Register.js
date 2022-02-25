@@ -53,46 +53,46 @@ export function Register({navigation}){
    }
 
     return(
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <View>
-          <Text>Email</Text>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: "#389FB9" }}>
+        <View style={{backgroundColor: "#CAACD7",justifyContent: 'space-evenly', padding: 50}}>
+          <Text style={{color: "#2D4BA7", fontWeight: 600}}>Email</Text>
           <TextInput
             placeholder='Enter email address'
             // value={guests}
             onChangeText={onChangeEmail}
           />
-          <Text>Password</Text>
+          <Text style={{color: "#2D4BA7", fontWeight: 600}}>Password</Text>
           <TextInput
             placeholder='Enter Password'
             value={password}
             onChangeText={onChangePassword}
           />
-           <Text>firstName</Text>
+           <Text style={{color: "#2D4BA7", fontWeight: 600}}>firstName</Text>
           <TextInput
             placeholder='firstName'
             value={firstName}
             onChangeText={onChangeFirstName}
           />
-           <Text>lastName</Text>
+           <Text style={{color: "#2D4BA7", fontWeight: 600}}>lastName</Text>
           <TextInput
             placeholder='lastName'
             value={lastName}
             onChangeText={onChangeLastName}
           />
-           <Text>phone</Text>
+           <Text style={{color: "#2D4BA7", fontWeight: 600}}>phone</Text>
           <TextInput
             placeholder='phone'
             value={phone}
             onChangeText={onChangePhone}
           />
            
-           <Text>Age</Text>
+           <Text style={{color: "#2D4BA7", fontWeight: 600}}>Age</Text>
           <TextInput
             placeholder='Age'
             value={age}
             onChangeText={onChangeAge}
           />
-          <Text>symptoms</Text>
+          <Text style={{color: "#2D4BA7", fontWeight: 600}}>symptoms</Text>
           <TextInput
             placeholder='symptoms'
             value={symptoms}
