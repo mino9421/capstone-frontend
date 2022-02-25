@@ -10,26 +10,31 @@ import Login from './Login'
 export default function HomeScreen({navigation}) {
 
   const [guests, onChangeGuests] = React.useState(null);
-  const [date, onChangeDate] = React.useState(null);
+  const [day, onChangeDay] = React.useState(null);
+  const [month, onChangeMonth] = React.useState(null);
+  const [year, onChangeYear] = React.useState(null);
   const [time, onChangeTime] = React.useState(null);
-  const [duration, onChangeDuration] = React.useState(null);
+ 
 
   const submitData = () => {
-    console.log(JSON.stringify(guests))
-    console.log(JSON.stringify(date))
-    console.log(JSON.stringify(time))
-    console.log(JSON.stringify(duration))
+    
+   
+    var timeSplit = time.split(":")
+   
+    var myDate = new Date(year, month, day, timeSplit[0] , timeSplit[1])
 
-    var oldDate = new Date("Thu Jan 01 1970 21:30:00 GMT +0530(IST)");
+   console.log(myDate)
+   
     var myData = {
       reservation_maker: "61fed5dcd17185ff5269f018",
       reservation_at: "62180a0de8b0487519699ceb",
       numGuests: guests,
-      start: oldDate,
-      end: oldDate
+      start: myDate
     }
+    
 
     axios.post("http://localhost:9090/api/v1/reservations", myData)
+  
       .then(function (response) {
         console.log(response)
       })
@@ -50,12 +55,29 @@ export default function HomeScreen({navigation}) {
           // value={guests}
           onChangeText={onChangeGuests}
         />
-        <Text>Date</Text>
+
+        <Text>Day</Text>
         <TextInput
-          placeholder='dd/mm/yy'
-          value={date}
-          onChangeText={onChangeDate}
+        
+          placeholder='Enter numneric day (02)'
+          value={day}
+          onChangeText={onChangeDay}
         />
+        <Text>Month</Text>
+        <TextInput
+       
+          placeholder='Enter numneric month (11)'
+          value={month}
+          onChangeText={onChangeMonth}
+        />
+        <Text>Year</Text>
+        <TextInput
+        
+          placeholder='Enter numneric year (2022)'
+          value={year}
+          onChangeText={onChangeYear}
+        />
+
         <Text>Time</Text>
         <TextInput
           placeholder='13:05'
@@ -63,16 +85,11 @@ export default function HomeScreen({navigation}) {
           keyboardType='numeric'
           onChangeText={onChangeTime}
         />
-        <Text>Duration</Text>
-        <TextInput
-          placeholder='in minutes'
-          value={duration}
-          keyboardType='numeric'
-          onChangeText={onChangeDuration}
-        />
+       
         <Button
           title="Reservation"
           onPress={submitData}
+          
         />
       </View>
       

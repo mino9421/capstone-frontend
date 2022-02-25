@@ -7,10 +7,7 @@ export default function Login({navigation}){
     const [email, onChangeEmail] = React.useState(null)
     const [password, onChangePassword] = React.useState(null)
 
-    const submitData =()=>{
-        console.log(JSON.stringify(email))
-        console.log(JSON.stringify(password))
-    }
+  
 
    
 
