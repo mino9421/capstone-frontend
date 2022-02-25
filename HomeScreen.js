@@ -48,7 +48,7 @@ export default function HomeScreen({navigation}) {
 
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: "#389FB9" }}>
-      <View style={{backgroundColor: "#CAACD7",justifyContent: 'space-evenly', alignItems: 'center', height: 500, width: 500, padding: 50, borderRadius: 15, shadowOffset: 50}}>
+      <View style={{backgroundColor: "#CAACD7",justifyContent: 'space-evenly', alignItems: 'center', height: 500, width: 500, padding: 50, borderRadius: 15}}>
         <Text style={{color: "#2D4BA7", fontWeight: 600}}>Number of Guests</Text>
         <TextInput
           style={{width: 200}}
