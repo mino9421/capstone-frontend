@@ -3,8 +3,7 @@ import axios from 'axios';
 import { Text, View, Button, TextInput, Alert  } from 'react-native'
 
 
-
-export function Login({navigation}){
+export default function Login({navigation}){
     const [email, onChangeEmail] = React.useState(null)
     const [password, onChangePassword] = React.useState(null)
 
@@ -25,9 +24,7 @@ export function Login({navigation}){
     .then(function (response) {
       console.log(response)
 
-      return(
-        <Profile/>
-        )
+      
     })
     .catch(function (error) {
       console.log(error)
@@ -54,6 +51,15 @@ export function Login({navigation}){
             title="Login"
             onPress= {()=>{
                 send()
+                navigation.navigate('Profile')
+            }}
+            
+          />
+          <Button
+            title="Register"
+            onPress= {()=>{
+              navigation.navigate('Register')
+                
             }}
             
           />
