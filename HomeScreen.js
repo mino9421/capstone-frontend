@@ -47,39 +47,40 @@ export default function HomeScreen({navigation}) {
   
 
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <View>
-        <Text>Number of Guests</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: "#389FB9" }}>
+      <View style={{backgroundColor: "#CAACD7",justifyContent: 'space-evenly', alignItems: 'center', height: 500, width: 500, padding: 50, borderRadius: 15, shadowOffset: 50}}>
+        <Text style={{color: "#2D4BA7", fontWeight: 600}}>Number of Guests</Text>
         <TextInput
+          style={{width: 200}}
           placeholder='Enter the number of guest'
-          // value={guests}
           onChangeText={onChangeGuests}
         />
 
-        <Text>Day</Text>
+        <Text style={{color: "#2D4BA7", fontWeight: 600}}>Day</Text>
         <TextInput
-        
+          style={{width: 200}}
           placeholder='Enter numneric day (02)'
           value={day}
           onChangeText={onChangeDay}
         />
-        <Text>Month</Text>
+        <Text style={{color: "#2D4BA7", fontWeight: 600}}>Month</Text>
         <TextInput
-       
+          style={{width: 200}}
           placeholder='Enter numneric month (11)'
           value={month}
           onChangeText={onChangeMonth}
         />
-        <Text>Year</Text>
+        <Text style={{color: "#2D4BA7", fontWeight: 600}}>Year</Text>
         <TextInput
-        
+          style={{width: 200}}
           placeholder='Enter numneric year (2022)'
           value={year}
           onChangeText={onChangeYear}
         />
 
-        <Text>Time</Text>
+        <Text style={{color: "#2D4BA7", fontWeight: 600}}>Time</Text>
         <TextInput
+          style={{width: 200}}
           placeholder='13:05'
           value={time}
           keyboardType='numeric'
@@ -93,9 +94,9 @@ export default function HomeScreen({navigation}) {
         />
       </View>
       
-      <View style={{}}>
+      {/* <View style={{}}>
         <CalenderPicker/>
-      </View>
+      </View> */}
 
     </View>
   );

@@ -31,7 +31,7 @@ export default function Login({navigation}){
     return(
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',
         backgroundColor: "#389FB9" }}>
-          <View style={{backgroundColor: "#CAACD7",justifyContent: 'space-evenly', height: 250, padding: 50}}>
+          <View style={{backgroundColor: "#CAACD7",justifyContent: 'space-evenly', height: 250, padding: 50, borderRadius: 15}}>
             <View>
               <Text style={{color: "#2D4BA7", fontWeight: 600}}>Email</Text>
               <TextInput
