@@ -27,47 +27,47 @@ export default function Login({navigation}){
     })
   }
 
-    return(
-      <View style={styles.parentView}>
-        <View style={styles.formBox}>
-          <View>
-            <Text style={styles.textStyle}>Email</Text>
-            <TextInput
-              placeholder='Enter email address'
-              // value={guests}
-              onChangeText={onChangeEmail}
-            />
-          </View>
-
-          <View>
-            <Text style={styles.textStyle}>Password</Text>
-            <TextInput
-              placeholder='Enter Password'
-              value={password}
-              onChangeText={onChangePassword}
-            />
-          </View>
-
-          <View style={styles.btnBox}>
-            <Button
-              title="Login"
-              onPress= {()=>{
-                  send()
-                  navigation.navigate('HomeScreen')
-              }}
-              
-            />
-            <Button
-              title="Register"
-              onPress= {()=>{
-                navigation.navigate('Register')
-              }}
-            />
-          </View>
-
+  return(
+    <View style={styles.parentView}>
+      <View style={styles.formBox}>
+        <View>
+          <Text style={styles.textStyle}>Email</Text>
+          <TextInput
+            placeholder='Enter email address'
+            // value={guests}
+            onChangeText={onChangeEmail}
+          />
         </View>
+
+        <View>
+          <Text style={styles.textStyle}>Password</Text>
+          <TextInput
+            placeholder='Enter Password'
+            value={password}
+            onChangeText={onChangePassword}
+          />
+        </View>
+
+        <View style={styles.btnBox}>
+          <Button
+            title="Login"
+            onPress= {()=>{
+                send()
+                navigation.navigate('HomeScreen')
+            }}
+            
+          />
+          <Button
+            title="Register"
+            onPress= {()=>{
+              navigation.navigate('Register')
+            }}
+          />
+        </View>
+
       </View>
-    );
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
