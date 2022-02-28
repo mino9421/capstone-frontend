@@ -1,6 +1,6 @@
 import * as React from 'react'
 import axios from 'axios';
-import { Text, View, Button, TextInput, Alert  } from 'react-native'
+import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
 
 
 
@@ -53,46 +53,46 @@ export function Register({navigation}){
    }
 
     return(
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: "#389FB9" }}>
-        <View style={{backgroundColor: "#CAACD7",justifyContent: 'space-evenly', padding: 50, borderRadius: 15}}>
-          <Text style={{color: "#2D4BA7", fontWeight: 600}}>Email</Text>
+        <View style={styles.parentView}>
+        <View style={styles.formBox}>
+          <Text style={styles.textStyle}>Email</Text>
           <TextInput
             placeholder='Enter email address'
             // value={guests}
             onChangeText={onChangeEmail}
           />
-          <Text style={{color: "#2D4BA7", fontWeight: 600}}>Password</Text>
+          <Text style={styles.textStyle}>Password</Text>
           <TextInput
             placeholder='Enter Password'
             value={password}
             onChangeText={onChangePassword}
           />
-           <Text style={{color: "#2D4BA7", fontWeight: 600}}>firstName</Text>
+           <Text style={styles.textStyle}>firstName</Text>
           <TextInput
             placeholder='firstName'
             value={firstName}
             onChangeText={onChangeFirstName}
           />
-           <Text style={{color: "#2D4BA7", fontWeight: 600}}>lastName</Text>
+           <Text style={styles.textStyle}>lastName</Text>
           <TextInput
             placeholder='lastName'
             value={lastName}
             onChangeText={onChangeLastName}
           />
-           <Text style={{color: "#2D4BA7", fontWeight: 600}}>phone</Text>
+           <Text style={styles.textStyle}>phone</Text>
           <TextInput
             placeholder='phone'
             value={phone}
             onChangeText={onChangePhone}
           />
            
-           <Text style={{color: "#2D4BA7", fontWeight: 600}}>Age</Text>
+           <Text style={styles.textStyle}>Age</Text>
           <TextInput
             placeholder='Age'
             value={age}
             onChangeText={onChangeAge}
           />
-          <Text style={{color: "#2D4BA7", fontWeight: 600}}>symptoms</Text>
+          <Text style={styles.textStyle}>symptoms</Text>
           <TextInput
             placeholder='symptoms'
             value={symptoms}
@@ -112,3 +112,33 @@ export function Register({navigation}){
       </View>
     );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+   // alignItems: 'center',
+    justifyContent: 'center',
+  },
+  parentView: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: "#389FB9"
+  },
+  formBox: {
+    backgroundColor: "#CAACD7",
+    justifyContent: 'space-evenly',
+    height: 250,
+    padding: 50,
+    borderRadius: 15
+  },
+  textStyle: {
+    color: "#2D4BA7",
+    fontWeight: 600
+  },
+  btnBox: {
+    height: 75,
+    justifyContent: 'space-between'
+  }
+});
