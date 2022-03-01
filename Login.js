@@ -19,11 +19,9 @@ export default function Login({navigation}){
     axios.post("http://localhost:9090/login", myData)
     .then(function (response) {
       console.log(response)
-      
     })
     .catch(function (error) {
       console.log(error)
-
     })
   }
 
