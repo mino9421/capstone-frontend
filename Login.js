@@ -19,6 +19,14 @@ export default function Login({navigation}){
     axios.post("http://localhost:9090/login", myData)
     .then(function (response) {
       console.log(response)
+      if(response.data.user.email !== "Password or Username are incorrect")
+      {
+        // set local storage 
+        localStorage.setItem('user', JSON.stringify(response.data.user))
+        navigation.navigate('HomeScreen')
+      }else{
+        console.log(response.data.user.email)
+      }
     })
     .catch(function (error) {
       console.log(error)
@@ -51,7 +59,6 @@ export default function Login({navigation}){
             title="Login"
             onPress= {()=>{
                 send()
-                navigation.navigate('HomeScreen')
             }}
             
           />
