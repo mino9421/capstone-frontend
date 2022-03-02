@@ -14,7 +14,7 @@ export default function Login({navigation}){
       console.log("debug " + localStorage.getItem("user"))
       if(localStorage.getItem('user') !== null)
       {
-        navigation.navigate('HomeScreen')
+        navigation.navigate('UserProfile')
       }
     }, []
   );
@@ -33,7 +33,7 @@ export default function Login({navigation}){
       {
         // set local storage 
         localStorage.setItem('user', JSON.stringify(response.data.user))
-        navigation.navigate('HomeScreen')
+        navigation.navigate('UserProfile')
       }else{
         console.log(response.data.user.email)
       }

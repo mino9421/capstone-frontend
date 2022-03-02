@@ -1,22 +1,24 @@
-import { useState, useEffect } from 'react'
+import * as React from 'react'
 import axios from 'axios';
-import { Text, View, Button, TextInput, StyleSheet, CheckBox  } from 'react-native'
+import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
 
 
 
 
 
+export default function EditUserProfile({navigation}){
 
+    var user = JSON.parse(localStorage.getItem('user'))
 
-export function Register({navigation}){
-    const [email, onChangeEmail] =useState(null)
-    const [password, onChangePassword] = useState(null)
-    const [firstName, onChangeFirstName] =useState(null)
-    const [lastName, onChangeLastName] = useState(null)
-    const [phone, onChangePhone] = useState(null)
-    const [age, onChangeAge] = useState(null)
-    const [symptoms, onChangeSymptoms] = useState(null)
-    const [isSelected, setSelection] = useState(false);
+    const [email, onChangeEmail] = React.useState(user.email)
+    const [password, onChangePassword] = React.useState(user.password)
+    const [firstName, onChangeFirstName] = React.useState(user.firstName)
+    const [lastName, onChangeLastName] = React.useState(user.lastName)
+    const [phone, onChangePhone] = React.useState(user.phone)
+    const [age, onChangeAge] = React.useState(user.age)
+    const [symptoms, onChangeSymptoms] = React.useState(user.symptoms)
+    const [vaccinated, onChangeVaccinated] = React.useState(user.vaccinated)
+    const [_id, onChange_Id] = React.useState(user._id)
 
     const submitData =()=>{
         console.log(JSON.stringify(email))
@@ -28,32 +30,31 @@ export function Register({navigation}){
         console.log(JSON.stringify(symptoms))
     }
 
-   
+    
+
+   // http://localhost:9090/api/v1/customers/6219185706aef0e68ea118b9
 
    function send(){
 
-    var type = 'customer';
-if (isSelected){
-  type = 'restaurant'
-}
-
     var myData = {
+        _id : _id,
         email : email,
         password : password,
         firstName : firstName,
         lastName : lastName,
         phone : phone,
         age : age,
-        symptoms : symptoms,
-        type : type
-
+        symptoms : symptoms, 
+        vaccinated: vaccinated
        
 
     }
     console.log(myData)
-    axios.post("http://localhost:9090/api/v1/customers", myData)
+    axios.post(`http://localhost:9090/api/v1/customers/${user._id}`, myData)
     .then(function (response) {
       console.log(response)
+      localStorage.setItem('user', JSON.stringify(myData))
+      navigation.navigate('UserProfile')
 
      
     })
@@ -62,69 +63,58 @@ if (isSelected){
     })
    }
 
-   
-
     return(
         <View style={styles.parentView}>
         <View style={styles.formBox}>
           <Text style={styles.textStyle}>Email</Text>
           <TextInput
             placeholder='Enter email address'
-            // value={guests}
+            defaultValue={user.email}
             onChangeText={onChangeEmail}
           />
           <Text style={styles.textStyle}>Password</Text>
           <TextInput
             placeholder='Enter Password'
-            value={password}
+            defaultValue={user.password}
             onChangeText={onChangePassword}
           />
            <Text style={styles.textStyle}>firstName</Text>
           <TextInput
             placeholder='firstName'
-            value={firstName}
+          defaultValue={user.firstName}
             onChangeText={onChangeFirstName}
           />
            <Text style={styles.textStyle}>lastName</Text>
           <TextInput
             placeholder='lastName'
-            value={lastName}
+            defaultValue={user.lastName}
             onChangeText={onChangeLastName}
           />
            <Text style={styles.textStyle}>phone</Text>
           <TextInput
             placeholder='phone'
-            value={phone}
+            defaultValue={user.phone}
             onChangeText={onChangePhone}
           />
            
            <Text style={styles.textStyle}>Age</Text>
           <TextInput
             placeholder='Age'
-            value={age}
+            defaultValue={user.age}
             onChangeText={onChangeAge}
           />
           <Text style={styles.textStyle}>symptoms</Text>
           <TextInput
             placeholder='symptoms'
-            value={symptoms}
+            defaultValue={user.symptoms}
             onChangeText={onChangeSymptoms}
           />
-          <Text>Role</Text>
-          <CheckBox
-           value={isSelected}
-           onValueChange={setSelection}
-          
-         />
-                 <Text style={styles.label}>Resataurant Owner?</Text>
-
-          
          
           <Button
-            title="Register"
+            title="Apply"
             onPress= {()=>{
                 send()
-                navigation.navigate('Login')
+                
                 
             }}
             

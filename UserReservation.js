@@ -2,7 +2,9 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet } from 'react-native'
 
-export default function HomeScreen({navigation}) {
+export default function UserReservation({navigation}) {
+
+  let user = JSON.parse(localStorage.getItem('user'))
 
   const [guests, onChangeGuests] = useState(null);
   const [day, onChangeDay] = useState(null);
@@ -21,7 +23,7 @@ export default function HomeScreen({navigation}) {
    console.log(myDate)
    
     var myData = {
-      reservation_maker: "61fed5dcd17185ff5269f018",
+      reservation_maker: `${user._id}`,
       reservation_at: "62180a0de8b0487519699ceb",
       numGuests: guests,
       start: myDate
@@ -44,14 +46,7 @@ export default function HomeScreen({navigation}) {
     navigation.navigate('Login')
   }
 
-  useEffect( 
-    ()=>{
-      navigation.reset({
-        index: 0,
-        routes: [{ name: 'HomeScreen' }],
-      });
-    }, []
-  );
+  
   
   return (
     <View style={styles.parentView}>

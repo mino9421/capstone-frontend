@@ -4,7 +4,10 @@ import Login from './Login'
 import { Register } from './Register';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from "./HomeScreen"
+import UserReservation from "./UserReservation"
+import UserProfile from './UserProfile'
+import EditUserProfile from './EditUserProfile'
+import CustomerResrvations from './CustomerReservations';
 
 
 
@@ -16,7 +19,10 @@ export default function App() {
       <Stack.Navigator>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="UserReservation" component={UserReservation} />
+      <Stack.Screen name="UserProfile" component={UserProfile} />
+      <Stack.Screen name="EditUserProfile" component={EditUserProfile} />
+      <Stack.Screen name="CustomerResrvations" component={CustomerResrvations} />
       </Stack.Navigator>
     </NavigationContainer>
   );
