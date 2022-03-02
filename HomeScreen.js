@@ -1,14 +1,14 @@
-import * as React from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet } from 'react-native'
 
 export default function HomeScreen({navigation}) {
 
-  const [guests, onChangeGuests] = React.useState(null);
-  const [day, onChangeDay] = React.useState(null);
-  const [month, onChangeMonth] = React.useState(null);
-  const [year, onChangeYear] = React.useState(null);
-  const [time, onChangeTime] = React.useState(null);
+  const [guests, onChangeGuests] = useState(null);
+  const [day, onChangeDay] = useState(null);
+  const [month, onChangeMonth] = useState(null);
+  const [year, onChangeYear] = useState(null);
+  const [time, onChangeTime] = useState(null);
  
 
   const submitData = () => {
@@ -39,6 +39,19 @@ export default function HomeScreen({navigation}) {
 
   };
 
+  const logout = () => {
+    localStorage.removeItem('user')
+    navigation.navigate('Login')
+  }
+
+  useEffect( 
+    ()=>{
+      navigation.reset({
+        index: 0,
+        routes: [{ name: 'HomeScreen' }],
+      });
+    }, []
+  );
   
   return (
     <View style={styles.parentView}>
@@ -84,6 +97,11 @@ export default function HomeScreen({navigation}) {
         <Button
           title="Reservation"
           onPress={submitData}
+          
+        />
+        <Button
+          title="Logout"
+          onPress={logout}
           
         />
       </View>

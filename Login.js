@@ -1,4 +1,4 @@
-import * as React from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
 
@@ -6,8 +6,18 @@ import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
 export default function Login({navigation}){
 
 
-  const [email, onChangeEmail] = React.useState(null)
-  const [password, onChangePassword] = React.useState(null)
+  const [email, onChangeEmail] = useState(null)
+  const [password, onChangePassword] = useState(null)
+
+  useEffect( 
+    ()=>{
+      console.log("debug " + localStorage.getItem("user"))
+      if(localStorage.getItem('user') !== null)
+      {
+        navigation.navigate('HomeScreen')
+      }
+    }, []
+  );
 
   function send(){
 
