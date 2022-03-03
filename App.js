@@ -8,6 +8,8 @@ import UserReservation from "./UserReservation"
 import UserProfile from './UserProfile'
 import EditUserProfile from './EditUserProfile'
 import CustomerResrvations from './CustomerReservations';
+import UserRestaurants from './UserRestaurants'
+import AddRestaurant from './AddRestaurant'
 
 
 
@@ -23,6 +25,8 @@ export default function App() {
       <Stack.Screen name="UserProfile" component={UserProfile} />
       <Stack.Screen name="EditUserProfile" component={EditUserProfile} />
       <Stack.Screen name="CustomerResrvations" component={CustomerResrvations} />
+      <Stack.Screen name="UserRestaurants" component={UserRestaurants} />
+      <Stack.Screen name="AddRestaurant" component={AddRestaurant} />
       </Stack.Navigator>
     </NavigationContainer>
   );

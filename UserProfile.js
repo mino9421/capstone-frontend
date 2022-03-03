@@ -14,8 +14,9 @@ const logout = () => {
   localStorage.removeItem('user')
   navigation.navigate('Login')
 }
- 
-    return( 
+ if (user.type == 'customer' || user.type == null)
+    {return( 
+      
         <View>
             <label>Email</label>
             <Text>{user.email}</Text>
@@ -61,5 +62,50 @@ const logout = () => {
         />
 
         </View>
-    )
+    )}
+    
+    else if(user.type == 'restaurant') {
+      return(
+        <View>
+
+            <label>Email</label>
+            <Text>{user.email}</Text>
+
+            <label>Name</label>
+            <Text>{user.firstName} {user.lastName}</Text>
+
+            <label>Age</label>
+            <Text>{user.age}</Text>
+
+            <label>Phone</label>
+            <Text>{user.phone}</Text>
+
+            <Button
+            title="Add Restaurant"
+            onPress= {()=>{
+              navigation.navigate('AddRestaurant')
+            }}
+          />
+
+            <Button
+            title="My Restaurants"
+            onPress= {()=>{
+              navigation.navigate('UserRestaurants')
+            }}
+          />
+
+          <Button
+            title="Edit Profile"
+            onPress= {()=>{
+              navigation.navigate('EditUserProfile')
+            }}
+          />
+
+          <Button
+          title="Logout"
+          onPress={logout}
+        />
+        </View>
+      )
+    }
 }
