@@ -20,6 +20,9 @@ export default function EditUserProfile({navigation}){
     const [vaccinated, onChangeVaccinated] = React.useState(user.vaccinated)
     const [_id, onChange_Id] = React.useState(user._id)
     const [type, onChangeType] = React.useState(user.type)
+
+
+    
     const submitData =()=>{
         console.log(JSON.stringify(email))
         console.log(JSON.stringify(password))

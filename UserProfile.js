@@ -6,6 +6,8 @@ import { useIsFocused } from '@react-navigation/native'
 export default function UserProfile ({navigation}){
   const isFocused = useIsFocused()
   var user = JSON.parse(localStorage.getItem('user'));
+
+  
   useEffect(() => {
      user = JSON.parse(localStorage.getItem('user'))
 } , [isFocused])

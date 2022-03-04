@@ -10,6 +10,7 @@ import EditUserProfile from './EditUserProfile'
 import CustomerResrvations from './CustomerReservations';
 import UserRestaurants from './UserRestaurants'
 import AddRestaurant from './AddRestaurant'
+import EditRestaurant from './EditRestaurant'
 
 
 
@@ -27,6 +28,9 @@ export default function App() {
       <Stack.Screen name="CustomerResrvations" component={CustomerResrvations} />
       <Stack.Screen name="UserRestaurants" component={UserRestaurants} />
       <Stack.Screen name="AddRestaurant" component={AddRestaurant} />
+
+      <Stack.Screen component={EditRestaurant} name="EditRestaurant" />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
