@@ -1,10 +1,15 @@
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Login from './Login'
 import { Register } from './Register';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import HomeScreen from "./HomeScreen"
+import UserReservation from "./UserReservation"
+import UserProfile from './UserProfile'
+import EditUserProfile from './EditUserProfile'
+import CustomerReservations from './CustomerReservations';
+import UserRestaurants from './UserRestaurants'
+import AddRestaurant from './AddRestaurant'
+import EditRestaurant from './EditRestaurant'
 
 
 
@@ -16,7 +21,13 @@ export default function App() {
       <Stack.Navigator>
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Register" component={Register} />
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="UserReservation" component={UserReservation} />
+      <Stack.Screen name="UserProfile" component={UserProfile} />
+      <Stack.Screen name="EditUserProfile" component={EditUserProfile} />
+      <Stack.Screen name="CustomerReservations" component={CustomerReservations} />
+      <Stack.Screen name="UserRestaurants" component={UserRestaurants} />
+      <Stack.Screen name="AddRestaurant" component={AddRestaurant} />
+      <Stack.Screen name="EditRestaurant" component={EditRestaurant}  />
       </Stack.Navigator>
     </NavigationContainer>
   );
