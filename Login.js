@@ -14,7 +14,7 @@ export default function Login({navigation}){
       console.log("debug " + localStorage.getItem("user"))
       if(localStorage.getItem('user') !== null)
       {
-        navigation.navigate('UserProfile')
+        navigation.replace('UserProfile')
       }
     }, []
   );
