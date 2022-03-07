@@ -13,55 +13,58 @@ export default function UserProfile ({navigation}){
 } , [isFocused])
     
 const logout = () => {
-  localStorage.removeItem('user')
   navigation.navigate('Login')
+  localStorage.removeItem('user')
 }
  if (user.type == 'customer' || user.type == null)
-    {return( 
+    {
+      return( 
       
         <View>
-            <label>Email</label>
-            <Text>{user.email}</Text>
 
-            <label>Name</label>
-            <Text>{user.firstName} {user.lastName}</Text>
+          <label>Email</label>
+          <Text>{user.email}</Text>
 
-            <label>Age</label>
-            <Text>{user.age}</Text>
+          <label>Name</label>
+          <Text>{user.firstName} {user.lastName}</Text>
 
-            <label>Phone</label>
-            <Text>{user.phone}</Text>
+          <label>Age</label>
+          <Text>{user.age}</Text>
 
-            <label>Vaccinated</label>
-            <Text>{JSON.stringify(user.vaccinated)}</Text>
+          <label>Phone</label>
+          <Text>{user.phone}</Text>
 
-            <label>Symptoms</label>
-            <Text>{JSON.stringify(user.symptoms)}</Text>
+          <label>Vaccinated</label>
+          <Text>{JSON.stringify(user.vaccinated)}</Text>
 
-            <Button
+          <label>Symptoms</label>
+          <Text>{JSON.stringify(user.symptoms)}</Text>
+
+          <Button
             title="Retaurant Reservation"
             onPress= {()=>{
               navigation.navigate('UserReservation')
             }}
           />
 
-            <Button
+          <Button
             title="Edit Profile"
             onPress= {()=>{
               navigation.navigate('EditUserProfile')
             }}
           />
-           <Button
-            title="View Reservations"
-            onPress= {()=>{
-              navigation.navigate('CustomerResrvations')
-            }}
+
+          <Button
+          title="View Reservations"
+          onPress= {()=>{
+            navigation.navigate('CustomerReservations')
+          }}
           />
+
           <Button
           title="Logout"
           onPress={logout}
-          
-        />
+          />
 
         </View>
     )}
@@ -70,26 +73,26 @@ const logout = () => {
       return(
         <View>
 
-            <label>Email</label>
-            <Text>{user.email}</Text>
+          <label>Email</label>
+          <Text>{user.email}</Text>
 
-            <label>Name</label>
-            <Text>{user.firstName} {user.lastName}</Text>
+          <label>Name</label>
+          <Text>{user.firstName} {user.lastName}</Text>
 
-            <label>Age</label>
-            <Text>{user.age}</Text>
+          <label>Age</label>
+          <Text>{user.age}</Text>
 
-            <label>Phone</label>
-            <Text>{user.phone}</Text>
+          <label>Phone</label>
+          <Text>{user.phone}</Text>
 
-            <Button
-            title="Add Restaurant"
-            onPress= {()=>{
-              navigation.navigate('AddRestaurant')
-            }}
+          <Button
+          title="Add Restaurant"
+          onPress= {()=>{
+            navigation.navigate('AddRestaurant')
+          }}
           />
 
-            <Button
+          <Button
             title="My Restaurants"
             onPress= {()=>{
               navigation.navigate('UserRestaurants')
@@ -106,7 +109,7 @@ const logout = () => {
           <Button
           title="Logout"
           onPress={logout}
-        />
+          />
         </View>
       )
     }
