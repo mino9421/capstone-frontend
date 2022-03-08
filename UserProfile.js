@@ -48,6 +48,13 @@ const logout = () => {
           />
 
           <Button
+            title="QR Code"
+            onPress= {()=>{
+              navigation.navigate('./components/QRcode')
+            }}
+          />
+
+          <Button
             title="Edit Profile"
             onPress= {()=>{
               navigation.navigate('EditUserProfile')

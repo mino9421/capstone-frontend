@@ -10,7 +10,7 @@ import CustomerReservations from './CustomerReservations';
 import UserRestaurants from './UserRestaurants'
 import AddRestaurant from './AddRestaurant'
 import EditRestaurant from './EditRestaurant'
-
+import QRcode from './components/QRcode';
 
 
 const Stack = createStackNavigator();
@@ -28,6 +28,7 @@ export default function App() {
       <Stack.Screen name="UserRestaurants" component={UserRestaurants} />
       <Stack.Screen name="AddRestaurant" component={AddRestaurant} />
       <Stack.Screen name="EditRestaurant" component={EditRestaurant}  />
+      <Stack.Screen name="QRcode" component={QRcode} />
       </Stack.Navigator>
     </NavigationContainer>
   );
