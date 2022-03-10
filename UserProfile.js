@@ -1,23 +1,33 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
+import { Text, View, Button, TextInput, StyleSheet, Image } from 'react-native'
 import { useIsFocused } from '@react-navigation/native'
+
+import QR from 'qrcode'
 
 export default function UserProfile ({navigation}){
   const isFocused = useIsFocused()
   var user = JSON.parse(localStorage.getItem('user'));
 
+  // const [src, setSrc] = useState('https://www.google.ca/')
   
   useEffect(() => {
      user = JSON.parse(localStorage.getItem('user'))
-} , [isFocused])
+  } , [isFocused])
     
-const logout = () => {
-  navigation.navigate('Login')
-  localStorage.removeItem('user')
-}
+  const logout = () => {
+    navigation.navigate('Login')
+    localStorage.removeItem('user')
+  }
+
  if (user.type == 'customer' || user.type == null)
     {
+      const [src, setSrc] = useState('')
+
+      useEffect(() => {
+          QR.toDataURL("https://www.google.ca/").then(setSrc)
+      }, [])
+
       return( 
       
         <View>
@@ -30,6 +40,14 @@ const logout = () => {
 
           <label>Age</label>
           <Text>{user.age}</Text>
+          
+          <label>QR</label>
+          <Image
+            style={styles.logo}
+            source={{uri:src}}
+            // source={{uri:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg=='}}
+          /> 
+          <label>QR</label>
 
           <label>Phone</label>
           <Text>{user.phone}</Text>
@@ -50,7 +68,7 @@ const logout = () => {
           <Button
             title="QR Code"
             onPress= {()=>{
-              navigation.navigate('./components/QRcode')
+              navigation.navigate('./components/QRcode.js')
             }}
           />
 
@@ -121,3 +139,16 @@ const logout = () => {
       )
     }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+   // alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    width: 66,
+    height: 58,
+  },
+});
