@@ -3,13 +3,15 @@ import { View, Text, Button, Image, StyleSheet } from 'react-native';
 import QR from 'qrcode'
 
 
-export default function QRcode({ history }){
+export default function QRcode({ history, route }){
 
     const [src, setSrc] = useState('')
 
     useEffect(() => {
-        QR.toDataURL("https://www.google.ca/").then(setSrc)
+        QR.toDataURL(`http://localhost:19006/${route.params.restaurant._id}`).then(setSrc)
     }, [])
+
+
 
     return(
         <View style={styles.container}>

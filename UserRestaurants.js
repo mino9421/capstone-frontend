@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
 import { useIsFocused } from '@react-navigation/native'
 
-
 export default function CustomerRestaurants({navigation}){
   const isFocused = useIsFocused()
     let user = JSON.parse(localStorage.getItem('user'))
@@ -28,33 +27,36 @@ export default function CustomerRestaurants({navigation}){
             })
         }, [isFocused]
       );
-
-      
-
-    
-
     
     const list = () => { 
         
         return restaurants.map((restaurant) => {
             
-            return( 
+            return(
+              <View key={restaurant._id}>
+                <Text>Restaurant Id: {restaurant._id}</Text>
+                <Text>Name:{restaurant.name}</Text>
+                <Text>Adress:{restaurant.address}</Text>
+                <Text>Cuisine:{restaurant.style}</Text>
+                <Text>Description:{restaurant.description}</Text>
                 
-                <View key={restaurant._id}>
-                    
-                    <Text>Restaurant Id: {restaurant._id}</Text>
-                    <Text>Name:{restaurant.name}</Text>
-                    <Text>Adress:{restaurant.address}</Text>
-                    <Text>Cuisine:{restaurant.style}</Text>
-                    <Text>Description:{restaurant.description}</Text>
-                    
-          <Button
-            title="Edit Restaurant"
-            onPress= {()=>{
-            navigation.navigate('EditRestaurant',{restaurant: restaurant})
-            }}
-          />
-                </View>
+                <Button
+                  title="Edit Restaurant"
+                  onPress= {()=>{
+                  navigation.navigate('EditRestaurant',{restaurant: restaurant})
+                  }}
+                />
+
+                <Button
+                  title="QR"
+                  onPress= {()=>{
+                  navigation.navigate('QRcode',{restaurant: restaurant})
+                  }}
+                />
+
+                 
+
+              </View>
                 
             )
         }
