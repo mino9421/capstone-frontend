@@ -20,6 +20,8 @@ export default function QRcode({ history, route }){
             style={styles.logo}
             source={{uri:src}}
             /> 
+            
+
         </View>
     )
 }
