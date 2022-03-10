@@ -116,12 +116,6 @@ export default function UserProfile ({navigation}){
               navigation.navigate('EditUserProfile')
             }}
           />
-          <Button
-            title="test"
-            onPress= {()=>{
-              navigation.navigate('Test')
-            }}
-          />
 
           <Button
           title="Logout"
