@@ -1,14 +1,29 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
+import { useEffect } from 'react';
+import { View, Text, Button, Image, StyleSheet } from 'react-native';
+import QRCode from 'qrcode'
+
 
 export default function QRcode({ history }){
 
-    <View>
-        <Text>This is the QR code page</Text>
+    const [src, setSrc] = useState('')
 
-        <Text>QR code goes here</Text>
 
-        <Button title="Go Back" onPress={() => history.push("/")} />
-    </View>
+    useEffect(() => {
+        QRCode.toDataURL("google.ca").then(setSrc)
+    }, [])
+
+    return(
+        <View>
+            <Text>This is the QR code page</Text>
+
+            <Text>QR code goes here</Text>
+
+            <Image
+                source={src}
+            />    
+
+            <Button title="Go Back" onPress={() => history.push("/")} />
+        </View>
+    )
 }
 
