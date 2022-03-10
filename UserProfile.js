@@ -22,12 +22,6 @@ export default function UserProfile ({navigation}){
 
  if (user.type == 'customer' || user.type == null)
     {
-      const [src, setSrc] = useState('')
-
-      useEffect(() => {
-          QR.toDataURL("https://www.google.ca/").then(setSrc)
-      }, [])
-
       return( 
       
         <View>
@@ -40,14 +34,6 @@ export default function UserProfile ({navigation}){
 
           <label>Age</label>
           <Text>{user.age}</Text>
-          
-          <label>QR</label>
-          <Image
-            style={styles.logo}
-            source={{uri:src}}
-            // source={{uri:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADMAAAAzCAYAAAA6oTAqAAAAEXRFWHRTb2Z0d2FyZQBwbmdjcnVzaEB1SfMAAABQSURBVGje7dSxCQBACARB+2/ab8BEeQNhFi6WSYzYLYudDQYGBgYGBgYGBgYGBgYGBgZmcvDqYGBgmhivGQYGBgYGBgYGBgYGBgYGBgbmQw+P/eMrC5UTVAAAAABJRU5ErkJggg=='}}
-          /> 
-          <label>QR</label>
 
           <label>Phone</label>
           <Text>{user.phone}</Text>
@@ -68,7 +54,7 @@ export default function UserProfile ({navigation}){
           <Button
             title="QR Code"
             onPress= {()=>{
-              navigation.navigate('./components/QRcode.js')
+              navigation.navigate('QRcode')
             }}
           />
 
@@ -146,9 +132,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
    // alignItems: 'center',
     justifyContent: 'center',
-  },
-  logo: {
-    width: 66,
-    height: 58,
   },
 });
