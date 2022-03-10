@@ -3,13 +3,10 @@ import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet, Image } from 'react-native'
 import { useIsFocused } from '@react-navigation/native'
 
-import QR from 'qrcode'
 
 export default function UserProfile ({navigation}){
   const isFocused = useIsFocused()
   var user = JSON.parse(localStorage.getItem('user'));
-
-  // const [src, setSrc] = useState('https://www.google.ca/')
   
   useEffect(() => {
      user = JSON.parse(localStorage.getItem('user'))
@@ -22,7 +19,7 @@ export default function UserProfile ({navigation}){
 
  if (user.type == 'customer' || user.type == null)
     {
-      return( 
+      return(
       
         <View>
 
