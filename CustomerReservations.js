@@ -36,18 +36,19 @@ export default function CustomerResrvations({navigation}){
             
             return( 
                 
-                <View key={element._id}>
+                <div key={element._id}>
                     
-                    <Text>User Id: {element.reservation_maker}</Text>
-                    <Text>Restaurant Id:{element.reservation_at}</Text>
-                    <Text>Number of Guests:{element.numGuests}</Text>
-                    <Text>Time/Day:{element.start}</Text>
-                </View>
+                    <div>User Id: {element.reservation_maker}</div>
+                    <div>Restaurant Id:{element.reservation_at}</div>
+                    <div>Number of Guests:{element.numGuests}</div>
+                    <div>Time/Day:{element.start}</div>
+                    <div>version 2</div>
+                </div>
                 
             )
         }
         
         )}
         console.log(reservations)
-        return <View><Text>{list()}</Text></View>;
+        return <div>{list()}</div>;
 }
