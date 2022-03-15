@@ -15,7 +15,7 @@ export default function CustomerRestaurants({navigation}){
     useEffect( 
         ()=>{
           user = JSON.parse(localStorage.getItem('user'))
-            axios.post("http://localhost:9090/api/v1/restaurants", {manager : user._id} )
+            axios.post("http://localhost:9090/api/v1/restaurants", {manager : user._id})
   
             .then(function (response) {
               console.log(response)
@@ -52,6 +52,12 @@ export default function CustomerRestaurants({navigation}){
             title="Edit Restaurant"
             onPress= {()=>{
             navigation.navigate('EditRestaurant',{restaurant: restaurant})
+            }}
+          />
+          <Button
+            title="Restaurant Home Page"
+            onPress= {()=>{
+            navigation.navigate('RestaurantEmployeeHomePage',{restaurant: restaurant})
             }}
           />
                 </View>
