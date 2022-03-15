@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet, CheckBox  } from 'react-native'
 
@@ -30,7 +30,8 @@ export function Register({navigation}){
 
    
 
-   function send(){
+   function send(e){
+     e.preventDefault()
 
     var type = 'customer';
 if (isSelected){
@@ -54,8 +55,7 @@ if (isSelected){
     axios.post("http://localhost:9090/api/v1/customers", myData)
     .then(function (response) {
       console.log(response)
-
-     
+      navigation.navigate('Login')
     })
     .catch(function (error) {
       console.log(error)
@@ -65,6 +65,28 @@ if (isSelected){
    
 
     return(
+      <Fragment>
+      <form onSubmit={send}>
+      <div>Email:</div>
+        <input type="text" placeholder='Enter email address' onChange={(e)=>onChangeEmail(e.target.value)}/>
+      <div>Password:</div>
+      <input type="text"  placeholder='Enter Password' onChange={(e)=>onChangePassword(e.target.value)}/>
+      <div>firstName:</div>
+      <input type="text"  placeholder='firstName' onChange={(e)=>onChangeFirstName(e.target.value)}/>
+      <div>lastName:</div>
+      <input type="text"  placeholder='lastName' onChange={(e)=>onChangeLastName(e.target.value)}/>
+      <div>phone:</div>
+      <input type="text"  placeholder='phone number' onChange={(e)=>onChangePhone(e.target.value)}/>
+      <div>age:</div>
+      <input type="text"  placeholder='Age' onChange={(e)=>onChangeAge(e.target.value)}/>
+      <div>symptoms:</div>
+      <input type="text"  placeholder='symptoms' onChange={(e)=>onChangeSymptoms(e.target.value)}/>
+      <div>Restaurant Owner:</div>
+      <input onClick={setSelection} checked={isSelected} type="checkbox" />
+      <input type="submit" value="Register"/>
+      </form>
+
+      {/*
         <View style={styles.parentView}>
         <View style={styles.formBox}>
           <Text style={styles.textStyle}>Email</Text>
@@ -124,13 +146,16 @@ if (isSelected){
             title="Register"
             onPress= {()=>{
                 send()
-                navigation.navigate('Login')
+                
                 
             }}
             
           />
         </View>
       </View>
+      
+      */}
+      </Fragment>
     );
 }
 
