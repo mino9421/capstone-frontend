@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, } from 'react-native';
 import Login from './Login'
 import { Register } from './Register';
 import { NavigationContainer } from '@react-navigation/native';
