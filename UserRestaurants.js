@@ -1,8 +1,6 @@
-import { useState, useEffect, Component } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
 import { useIsFocused } from '@react-navigation/native'
-
 
 export default function CustomerRestaurants({navigation}){
   const isFocused = useIsFocused()
@@ -28,38 +26,37 @@ export default function CustomerRestaurants({navigation}){
             })
         }, [isFocused]
       );
-
-      
-
-    
-
     
     const list = () => { 
         
         return restaurants.map((restaurant) => {
             
-            return( 
+            return(
+              <div key={restaurant._id}>
+                <p>Restaurant Id: {restaurant._id}</p>
+                <p>Name:{restaurant.name}</p>
+                <p>Address:{restaurant.address}</p>
+                <p>Cuisine:{restaurant.style}</p>
+                <p>Description:{restaurant.description}</p>
                 
-                <View key={restaurant._id}>
-                    
-                    <Text>Restaurant Id: {restaurant._id}</Text>
-                    <Text>Name:{restaurant.name}</Text>
-                    <Text>Adress:{restaurant.address}</Text>
-                    <Text>Cuisine:{restaurant.style}</Text>
-                    <Text>Description:{restaurant.description}</Text>
-                    
-          <Button
-            title="Edit Restaurant"
-            onPress= {()=>{
-            navigation.navigate('EditRestaurant',{restaurant: restaurant})
-            }}
-          />
-                </View>
+                <button onClick= {()=>{
+                  navigation.navigate('EditRestaurant',{restaurant: restaurant})
+                  }}
+                >Edit Restaurant</button>
+
+                <button onClick= {()=>{
+                  navigation.navigate('QRcode',{restaurant: restaurant})
+                  }}
+                >QR</button>
+
+                 
+
+              </div>
                 
             )
         }
         
         )}
         console.log(restaurants)
-        return <View><Text>{list()}</Text></View>;
+        return <div><p>{list()}</p></div>;
 }
