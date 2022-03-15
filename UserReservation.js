@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet } from 'react-native'
 
-export default function UserReservation({navigation}) {
+export default function UserReservation({navigation, route }) {
 
   let user = JSON.parse(localStorage.getItem('user'))
+
+  var restaurant = route.params.restaurant
+  
+  console.log(restaurant.name)
 
   const [guests, onChangeGuests] = useState(null);
   const [day, onChangeDay] = useState(null);
@@ -13,8 +17,8 @@ export default function UserReservation({navigation}) {
   const [time, onChangeTime] = useState(null);
  
 
-  const submitData = () => {
-    
+  const submitData = (e) => {
+    e.preventDefault()
    
     var timeSplit = time.split(":")
    
@@ -24,7 +28,7 @@ export default function UserReservation({navigation}) {
    
     var myData = {
       reservation_maker: `${user._id}`,
-      reservation_at: "62180a0de8b0487519699ceb",
+      reservation_at: `${restaurant._id}`,
       numGuests: guests,
       start: myDate
     }
@@ -34,6 +38,7 @@ export default function UserReservation({navigation}) {
   
       .then(function (response) {
         console.log(response)
+        navigation.navigate('UserProfile')
       })
       .catch(function (error) {
         console.log(error)
@@ -49,6 +54,23 @@ export default function UserReservation({navigation}) {
   
   
   return (
+    <Fragment>
+      <form onSubmit={submitData}>
+      <div>Number of Guests</div>
+      <input type="text" onChange={(e)=>onChangeGuests(e.target.value)}/>
+      <div>Day</div>
+      <input type="text" onChange={(e)=>onChangeDay(e.target.value)}/>
+      <div>Month</div>
+      <input type="text" onChange={(e)=>onChangeMonth(e.target.value)}/>
+      <div>Year</div>
+      <input type="text" onChange={(e)=>onChangeYear(e.target.value)}/>
+      <div>Time</div>
+      <input type="text" onChange={(e)=>onChangeTime(e.target.value)}/>
+      <input type="submit" value="Make Reservation"/>
+
+      
+      </form>
+    {/*
     <View style={styles.parentView}>
       <View style={styles.formBox}>
         <Text style={styles.textStyle}>Number of Guests</Text>
@@ -102,6 +124,10 @@ export default function UserReservation({navigation}) {
       </View>
     
     </View>
+    */}
+
+</Fragment>
+
   );
 }
   

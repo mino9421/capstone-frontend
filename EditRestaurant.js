@@ -9,9 +9,6 @@ import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
 
 export default function EditUserProfile({navigation, route} ){
     
-    
-
-    
  
     var restaurant = route.params.restaurant
 

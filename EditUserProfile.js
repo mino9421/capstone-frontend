@@ -1,6 +1,7 @@
 import * as React from 'react'
 import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
+import { Fragment } from 'react/cjs/react.production.min';
 
 
 
@@ -37,7 +38,7 @@ export default function EditUserProfile({navigation}){
 
    // http://localhost:9090/api/v1/customers/6219185706aef0e68ea118b9
 
-   function send(){
+    function send(e){
 
     var myData = {
         _id : _id,
@@ -67,63 +68,65 @@ export default function EditUserProfile({navigation}){
    }
 
     return(
-        <View style={styles.parentView}>
-        <View style={styles.formBox}>
-          <Text style={styles.textStyle}>Email</Text>
-          <TextInput
-            placeholder='Enter email address'
+      <Fragment>
+        <form onSubmit={send}>
+       
+          <p>Email</p>
+          <input
+          type="text"
+            
             defaultValue={user.email}
-            onChangeText={onChangeEmail}
+            onChange={(e)=>onChangeEmail(e.target.value)}
           />
-          <Text style={styles.textStyle}>Password</Text>
-          <TextInput
-            placeholder='Enter Password'
+          <p >Password</p>
+          <input
+          type="text"
+            
             defaultValue={user.password}
-            onChangeText={onChangePassword}
+            onChange={(e)=>onChangePassword(e.target.value)}
           />
-           <Text style={styles.textStyle}>firstName</Text>
-          <TextInput
-            placeholder='firstName'
+           <p >firstName</p>
+          <input
+          type="text"
+            
           defaultValue={user.firstName}
-            onChangeText={onChangeFirstName}
+            onChange={(e)=>onChangeFirstName(e.target.value)}
           />
-           <Text style={styles.textStyle}>lastName</Text>
-          <TextInput
-            placeholder='lastName'
+           <p >lastName</p>
+          <input
+          type="text"
+            
             defaultValue={user.lastName}
-            onChangeText={onChangeLastName}
+            onChange={(e)=>onChangeLastName(e.target.value)}
           />
-           <Text style={styles.textStyle}>phone</Text>
-          <TextInput
-            placeholder='phone'
+           <p >phone</p>
+          <input
+          type="text"
+           
             defaultValue={user.phone}
-            onChangeText={onChangePhone}
+            onChange={(e)=>onChangePhone(e.target.value)}
           />
            
-           <Text style={styles.textStyle}>Age</Text>
-          <TextInput
-            placeholder='Age'
-            defaultValue={user.age}
-            onChangeText={onChangeAge}
-          />
-          <Text style={styles.textStyle}>symptoms</Text>
-          <TextInput
-            placeholder='symptoms'
-            defaultValue={user.symptoms}
-            onChangeText={onChangeSymptoms}
-          />
-         
-          <Button
-            title="Apply"
-            onPress= {()=>{
-                send()
-                
-                
-            }}
+           <p >Age</p>
+          <input
+          type="text"
             
+            defaultValue={user.age}
+            onChange={(e)=>onChangeAge(e.target.value)}
           />
-        </View>
-      </View>
+          <p >symptoms</p>
+          <input
+          type="text"
+           
+            defaultValue={user.symptoms}
+            onChange={(e)=>onChangeSymptoms(e.target.value)}
+          />
+          <button type="submit" value="Submit"/>
+          
+        
+      
+      </form>
+      </Fragment>
     );
 }
 
