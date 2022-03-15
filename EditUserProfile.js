@@ -40,6 +40,8 @@ export default function EditUserProfile({navigation}){
 
     function send(e){
 
+    e.preventDefault()
+
     var myData = {
         _id : _id,
         email : email,
@@ -121,7 +123,7 @@ export default function EditUserProfile({navigation}){
             defaultValue={user.symptoms}
             onChange={(e)=>onChangeSymptoms(e.target.value)}
           />
-          <button type="submit" value="Submit"/>
+          <input type="submit" value="Submit"/>
           
         
       
