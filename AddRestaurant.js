@@ -14,7 +14,8 @@ export default function AddRestaurant({navigation}){
     const [phone, onChangePhone] = useState(null)
     const [managed_by, onChangeManaged_by] = useState(user._id)
 
-   function send(){
+   function send(e){
+    e.preventDefault()
 
 
 
@@ -46,6 +47,27 @@ export default function AddRestaurant({navigation}){
    
 
     return(
+      <fragment>
+        <form onSubmit={send}>
+      <div>Name:</div>
+        <input type="text" onChange={(e)=>onChangeName(e.target.value)}/>
+      <div>Address:</div>
+      <input type="text" onChange={(e)=>onChangeAddress(e.target.value)}/>
+      <div>Menu File Name:</div>
+      <input type="text" onChange={(e)=>onChangeMenuFileName(e.target.value)}/>
+      <div>Style:</div>
+      <input type="text" onChange={(e)=>onChangeStyle(e.target.value)}/>
+      <div>Opening Time:</div>
+      <input type="text" onChange={(e)=>onChangeOpening_hours(e.target.value)}/>
+      <div>Phone:</div>
+      <input type="text" onChange={(e)=>onChangePhone(e.target.value)}/>
+      <div>Managed by:</div>
+      <input type="text" onChange={(e)=>onManagedBy(e.target.value)}/>
+      <input type="submit" value="Add Restaurant"/>
+
+      </form>
+
+        {/* 
         <View style={styles.parentView}>
         <View style={styles.formBox}>
           <Text style={styles.textStyle}>Name</Text>
@@ -92,6 +114,8 @@ export default function AddRestaurant({navigation}){
           />
         </View>
       </View>
+      */}
+      </fragment>
     );
 }
 

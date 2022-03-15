@@ -55,8 +55,9 @@ function send(e){
       <div>Password:</div>
       <input type="text" onChange={(e)=>onChangePassword(e.target.value)}/>
       <input type="submit" value="login"/>
+
       </form>
-      
+      <button type="button" onClick={()=>navigation.navigate('Register')}>Register</button>
 
        {/*
 
