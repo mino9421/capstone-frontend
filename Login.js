@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
 
@@ -43,8 +43,18 @@ export default function Login({navigation}){
     })
   }
 
-  return(
-    <View style={styles.parentView}>
+  return( 
+    <Fragment>
+      <form>
+      <div>Email:</div>
+        <input type="text" onChange={onChangeEmail}/>
+      <div>Password:</div>
+      <input type="text" onChange={onChangePassword}/>
+      </form>
+
+       {/*
+
+          <View style={styles.parentView}>
       <View style={styles.formBox}>
         <View>
           <Text style={styles.textStyle}>Email</Text>
@@ -82,6 +92,9 @@ export default function Login({navigation}){
 
       </View>
     </View>
+  */}
+    </Fragment>
+
   );
 }
 
