@@ -1,24 +1,25 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
+import { Text, View, Button, TextInput, StyleSheet, Image } from 'react-native'
 import { useIsFocused } from '@react-navigation/native'
+
 
 export default function UserProfile ({navigation}){
   const isFocused = useIsFocused()
   var user = JSON.parse(localStorage.getItem('user'));
-
   
   useEffect(() => {
      user = JSON.parse(localStorage.getItem('user'))
-} , [isFocused])
+  } , [isFocused])
     
-const logout = () => {
-  navigation.navigate('Login')
-  localStorage.removeItem('user')
-}
+  const logout = () => {
+    navigation.navigate('Login')
+    localStorage.removeItem('user')
+  }
+
  if (user.type == 'customer' || user.type == null)
     {
-      return( 
+      return(
       
         <View>
 
@@ -50,7 +51,7 @@ const logout = () => {
           <Button
             title="QR Code"
             onPress= {()=>{
-              navigation.navigate('./components/QRcode')
+              navigation.navigate('QRcode')
             }}
           />
 
@@ -121,3 +122,12 @@ const logout = () => {
       )
     }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+   // alignItems: 'center',
+    justifyContent: 'center',
+  },
+});

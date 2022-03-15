@@ -2,13 +2,14 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { useIsFocused } from '@react-navigation/native'
 
-
 export default function CustomerRestaurants({navigation}){
   const isFocused = useIsFocused()
     let user = JSON.parse(localStorage.getItem('user'))
 
     const [restaurants, onChangeRestaurants] = useState([])
-
+    
+   
+ 
     useEffect( 
         ()=>{
           user = JSON.parse(localStorage.getItem('user'))
@@ -28,29 +29,34 @@ export default function CustomerRestaurants({navigation}){
     
     const list = () => { 
         
-      return restaurants.map((restaurant) => {
-          
-          return( 
-              
-            <div key={restaurant._id}>
-                
-              <p>Restaurant Id: {restaurant._id}</p>
-              <p>Name:{restaurant.name}</p>
-              <p>Address:{restaurant.address}</p>
-              <p>Cuisine:{restaurant.style}</p>
-              <p>Description:{restaurant.description}</p>
-
-              <button
-                onClick= {()=>{
-                navigation.navigate('EditRestaurant',{restaurant: restaurant})
-                }}
-              >Edit Restaurant</button>
-
-            </div>
+        return restaurants.map((restaurant) => {
             
-          )
-      })
-    }
+            return(
+              <div key={restaurant._id}>
+                <p>Restaurant Id: {restaurant._id}</p>
+                <p>Name:{restaurant.name}</p>
+                <p>Address:{restaurant.address}</p>
+                <p>Cuisine:{restaurant.style}</p>
+                <p>Description:{restaurant.description}</p>
+                
+                <button onClick= {()=>{
+                  navigation.navigate('EditRestaurant',{restaurant: restaurant})
+                  }}
+                >Edit Restaurant</button>
+
+                <button onClick= {()=>{
+                  navigation.navigate('QRcode',{restaurant: restaurant})
+                  }}
+                >QR</button>
+
+                 
+
+              </div>
+                
+            )
+        }
+        
+        )}
         console.log(restaurants)
         return <div><p>{list()}</p></div>;
 }
