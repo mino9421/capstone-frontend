@@ -1,6 +1,5 @@
-import { useState, useEffect, Component } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
 import { useIsFocused } from '@react-navigation/native'
 
 export default function CustomerRestaurants({navigation}){
@@ -33,35 +32,31 @@ export default function CustomerRestaurants({navigation}){
         return restaurants.map((restaurant) => {
             
             return(
-              <View key={restaurant._id}>
-                <Text>Restaurant Id: {restaurant._id}</Text>
-                <Text>Name:{restaurant.name}</Text>
-                <Text>Adress:{restaurant.address}</Text>
-                <Text>Cuisine:{restaurant.style}</Text>
-                <Text>Description:{restaurant.description}</Text>
+              <div key={restaurant._id}>
+                <p>Restaurant Id: {restaurant._id}</p>
+                <p>Name:{restaurant.name}</p>
+                <p>Address:{restaurant.address}</p>
+                <p>Cuisine:{restaurant.style}</p>
+                <p>Description:{restaurant.description}</p>
                 
-                <Button
-                  title="Edit Restaurant"
-                  onPress= {()=>{
+                <button onClick= {()=>{
                   navigation.navigate('EditRestaurant',{restaurant: restaurant})
                   }}
-                />
+                >Edit Restaurant</button>
 
-                <Button
-                  title="QR"
-                  onPress= {()=>{
+                <button onClick= {()=>{
                   navigation.navigate('QRcode',{restaurant: restaurant})
                   }}
-                />
+                >QR</button>
 
                  
 
-              </View>
+              </div>
                 
             )
         }
         
         )}
         console.log(restaurants)
-        return <View><Text>{list()}</Text></View>;
+        return <div><p>{list()}</p></div>;
 }
