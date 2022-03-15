@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet } from 'react-native'
 
@@ -13,8 +13,8 @@ export default function UserReservation({navigation}) {
   const [time, onChangeTime] = useState(null);
  
 
-  const submitData = () => {
-    
+  const submitData = (e) => {
+    e.preventDefault()
    
     var timeSplit = time.split(":")
    
@@ -49,6 +49,23 @@ export default function UserReservation({navigation}) {
   
   
   return (
+    <Fragment>
+      <form onSubmit={submitData}>
+      <div>Number of Guests</div>
+      <input type="text" onChange={(e)=>onChangeGuests(e.target.value)}/>
+      <div>Day</div>
+      <input type="text" onChange={(e)=>onChangeDay(e.target.value)}/>
+      <div>Month</div>
+      <input type="text" onChange={(e)=>onChangeMonth(e.target.value)}/>
+      <div>Year</div>
+      <input type="text" onChange={(e)=>onChangeYear(e.target.value)}/>
+      <div>Time</div>
+      <input type="text" onChange={(e)=>onChangeTime(e.target.value)}/>
+      <input type="submit" value="Make Reservation"/>
+
+      
+      </form>
+    {/*
     <View style={styles.parentView}>
       <View style={styles.formBox}>
         <Text style={styles.textStyle}>Number of Guests</Text>
@@ -102,6 +119,10 @@ export default function UserReservation({navigation}) {
       </View>
     
     </View>
+    */}
+
+</Fragment>
+
   );
 }
   
