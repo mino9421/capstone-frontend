@@ -19,12 +19,16 @@ export default function Login({navigation}){
     }, []
   );
 
-  function send(){
+function send(e){
+  e.preventDefault()
 
     var myData = {
         email : email,
         password : password
+
+
     }
+    console.log(myData)
 
     axios.post("http://localhost:9090/login", myData)
     .then(function (response) {
@@ -45,12 +49,14 @@ export default function Login({navigation}){
 
   return( 
     <Fragment>
-      <form>
+      <form onSubmit={send}>
       <div>Email:</div>
-        <input type="text" onChange={onChangeEmail}/>
+        <input type="text" onChange={(e)=>onChangeEmail(e.target.value)}/>
       <div>Password:</div>
-      <input type="text" onChange={onChangePassword}/>
+      <input type="text" onChange={(e)=>onChangePassword(e.target.value)}/>
+      <input type="submit" value="login"/>
       </form>
+      
 
        {/*
 
