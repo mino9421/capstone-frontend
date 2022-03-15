@@ -57,12 +57,7 @@ function send(e){
       <input type="submit" value="login"/>
 
       </form>
-<<<<<<< HEAD
       <button type="button" onClick={()=>navigation.navigate('Register')}>Register</button>
-=======
-      
-      
->>>>>>> d9d2ae0cc49481189a2895f5f48d8e25d2986636
 
        {/*
 
