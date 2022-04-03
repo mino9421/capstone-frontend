@@ -1,6 +1,7 @@
 import { useState, useEffect, Fragment } from 'react'
 import axios from 'axios';
 import { Text, View, Button, TextInput, StyleSheet  } from 'react-native'
+import './StyleTemplate.css'
 
 
 export default function Login({navigation}){
@@ -47,17 +48,33 @@ function send(e){
     })
   }
 
-  return( 
-    <Fragment>
-      <form onSubmit={send}>
-      <div>Email:</div>
-        <input type="text" onChange={(e)=>onChangeEmail(e.target.value)}/>
-      <div>Password:</div>
-      <input type="text" onChange={(e)=>onChangePassword(e.target.value)}/>
-      <input type="submit" value="login"/>
+  
 
-      </form>
-      <button type="button" onClick={()=>navigation.navigate('Register')}>Register</button>
+  return( 
+
+    <Fragment>
+      <img src='Logo.png' alt='PASSPORT MEALS Logo'></img>
+      <navbar>
+      <ul>
+        <li><a onClick={()=>navigation.navigate('Home')}>Home</a></li>
+        <li><a onClick={()=>navigation.navigate('Restaurants')}>Restaurants</a></li>
+        <li><a onClick={()=>navigation.navigate('Menu')}>Menu</a></li>
+        <li><a onClick={()=>navigation.navigate('Help')}>Help</a></li>
+      </ul>
+      </navbar>
+
+      <div className= 'content'>
+
+      <form onSubmit={send}>
+        <div  className='subHead'>Email:</div>
+          <input type="text" onChange={(e)=>onChangeEmail(e.target.value)}/>
+        <div>Password:</div>
+        <input type="text" onChange={(e)=>onChangePassword(e.target.value)}/>
+        <input type="submit" value="login"/>
+
+        </form>
+        <button type="button" onClick={()=>navigation.navigate('Register')}>Register</button>
+      </div>
 
        {/*
 
